@@ -7,84 +7,48 @@
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- MathJax for LaTeX rendering -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      }
-    };
-  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>const s=localStorage.getItem('theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-cml.js" async></script>
 </head>
 <body>
   <div class="grain"></div>
-
   <nav>
     <a href="../index.html" class="nav-name">Your Name</a>
     <div class="nav-links">
       <a href="../math/index.html">Math</a>
       <a href="../blog/index.html">Blog</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
     </div>
   </nav>
 
   <main class="article-main">
     <a href="index.html" class="back-link">← Math</a>
-
     <header class="article-header">
       <h1>The Basel Problem</h1>
       <div class="article-meta">June 1, 2025</div>
     </header>
-
     <article class="prose">
-
-      <p>
-        The Basel problem asks for the precise sum of the reciprocals of the squares of the natural numbers:
-      </p>
-
+      <p>The Basel problem asks for the precise sum of the reciprocals of the squares of the natural numbers:</p>
       $$\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \cdots$$
-
-      <p>
-        This sum had stumped mathematicians for nearly a century before Euler solved it in 1734,
-        showing the answer is $\frac{\pi^2}{6}$. His proof is a beautiful piece of mathematical audacity.
-      </p>
-
+      <p>This sum had stumped mathematicians for nearly a century before Euler solved it in 1734, showing the answer is $\frac{\pi^2}{6}$.</p>
       <h2>Euler's Approach</h2>
-
-      <p>
-        Euler's key insight was to treat $\sin(x)$ as an infinite polynomial whose roots are
-        $x = 0, \pm\pi, \pm 2\pi, \ldots$, and then compare the coefficient of $x^2$ with the
-        expansion of $\sin(x)/x$:
-      </p>
-
-      $$\frac{\sin x}{x} = 1 - \frac{x^2}{6} + \frac{x^4}{120} - \cdots$$
-
-      <p>
-        Thinking of it as a product over its roots:
-      </p>
-
+      <p>Euler's key insight was to treat $\sin(x)$ as an infinite polynomial and compare coefficients:</p>
       $$\frac{\sin x}{x} = \prod_{n=1}^{\infty} \left(1 - \frac{x^2}{n^2\pi^2}\right)$$
-
-      <p>
-        Expanding and matching the coefficient of $x^2$ on both sides gives:
-      </p>
-
-      $$-\frac{1}{6} = -\sum_{n=1}^{\infty} \frac{1}{n^2 \pi^2}$$
-
-      <p>Therefore:</p>
-
+      <p>Matching the coefficient of $x^2$ on both sides gives:</p>
       $$\boxed{\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}}$$
-
-      <p>
-        Euler's argument wasn't fully rigorous by modern standards — the product formula for
-        sine requires justification — but the result is correct and the proof was revolutionary.
-      </p>
-
     </article>
   </main>
 
   <footer><span>Your Name</span></footer>
+  <script>
+    const t=document.getElementById('themeToggle'),i=document.getElementById('themeIcon');
+    function applyTheme(th){if(th==='dark'){document.documentElement.setAttribute('data-theme','dark');i.className='fa-solid fa-sun';}else{document.documentElement.removeAttribute('data-theme');i.className='fa-solid fa-moon';}}
+    applyTheme(localStorage.getItem('theme')||'light');
+    t.addEventListener('click',()=>{const d=document.documentElement.getAttribute('data-theme')==='dark';const n=d?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+  </script>
 </body>
 </html>
