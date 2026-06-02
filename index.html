@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    // Apply saved theme before page renders to prevent flash
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <nav>
+    <a href="index.html" class="nav-name">Your Name</a>
+    <div class="nav-links">
+      <a href="math/index.html">Math</a>
+      <a href="blog/index.html">Blog</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="home-main">
+    <div class="home-content">
+      <div class="intro-block">
+        <span class="label">About</span>
+        <h1>Your Name</h1>
+
+        <!-- ✏️ EDIT THIS: Replace with your own introduction -->
+        <p class="intro-text">
+          Hi! I'm a mathematician / student / curious person based in [City].
+          I think about [your interests], write about math and other things,
+          and occasionally surface for coffee.
+        </p>
+
+        <!-- ✏️ EDIT THIS: Put your real email and LinkedIn URL -->
+        <div class="contact-links">
+          <a href="mailto:you@email.com" class="contact-pill">
+            <i class="fa-regular fa-envelope pill-icon"></i> you@email.com
+          </a>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-pill">
+            <i class="fa-brands fa-linkedin pill-icon"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="home-sections">
+        <a href="math/index.html" class="section-card">
+          <span class="card-label">Section 01</span>
+          <h2>Math</h2>
+          <p>Articles, notes, and explorations in mathematics — with full LaTeX support.</p>
+          <span class="arrow">→</span>
+        </a>
+        <a href="blog/index.html" class="section-card">
+          <span class="card-label">Section 02</span>
+          <h2>Blog</h2>
+          <p>Thoughts on other things: books, ideas, whatever I feel like writing about.</p>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Built with GitHub Pages</span>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const icon   = document.getElementById('themeIcon');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        icon.className = 'fa-solid fa-sun';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        icon.className = 'fa-solid fa-moon';
+      }
+    }
+
+    // Set correct icon on load
+    applyTheme(localStorage.getItem('theme') || 'light');
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+  </script>
+</body>
+</html>
