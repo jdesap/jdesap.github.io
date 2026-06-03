@@ -9,9 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script>
-    // Apply saved theme before page renders to prevent flash
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    const s=localStorage.getItem('theme');if(s&&s!=='light')document.documentElement.setAttribute('data-theme',s);
   </script>
 </head>
 <body>
@@ -22,9 +20,13 @@
     <div class="nav-links">
       <a href="math/index.html">math</a>
       <a href="blog/index.html">blog</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <i class="fa-solid fa-moon" id="themeIcon"></i>
-      </button>
+      <div class="theme-picker" id="themePicker">
+        <button class="theme-dot" data-theme="light"   style="background:#8b3a1a" aria-label="Light"   title="light"></button>
+        <button class="theme-dot" data-theme="dark"    style="background:#c4673a" aria-label="Dark"    title="dark"></button>
+        <button class="theme-dot" data-theme="dracula" style="background:#bd93f9" aria-label="Dracula" title="dracula"></button>
+        <button class="theme-dot" data-theme="gruvbox" style="background:#fabd2f" aria-label="Gruvbox" title="gruvbox"></button>
+        <button class="theme-dot" data-theme="nord"    style="background:#88c0d0" aria-label="Nord"    title="nord"></button>
+      </div>
     </div>
   </nav>
 
@@ -72,27 +74,20 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('themeToggle');
-    const icon   = document.getElementById('themeIcon');
-
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        icon.className = 'fa-solid fa-sun';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        icon.className = 'fa-solid fa-moon';
-      }
+    function applyTheme(th) {
+      if (th === 'light') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', th);
+      document.querySelectorAll('.theme-dot').forEach(d =>
+        d.classList.toggle('active', d.dataset.theme === th)
+      );
     }
-
-    // Set correct icon on load
     applyTheme(localStorage.getItem('theme') || 'light');
-
-    toggle.addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      localStorage.setItem('theme', next);
-      applyTheme(next);
+    document.getElementById('themePicker').addEventListener('click', e => {
+      const dot = e.target.closest('.theme-dot');
+      if (!dot) return;
+      const th = dot.dataset.theme;
+      localStorage.setItem('theme', th);
+      applyTheme(th);
     });
   </script>
 </body>

@@ -26,6 +26,42 @@
 }
 
 /* =====================
+   DESIGN TOKENS — DRACULA
+   ===================== */
+[data-theme="dracula"] {
+  --bg:        #282a36;
+  --bg-card:   #1e1f29;
+  --ink:       #f8f8f2;
+  --ink-muted: #6272a4;
+  --accent:    #bd93f9;
+  --border:    #44475a;
+}
+
+/* =====================
+   DESIGN TOKENS — GRUVBOX
+   ===================== */
+[data-theme="gruvbox"] {
+  --bg:        #282828;
+  --bg-card:   #3c3836;
+  --ink:       #ebdbb2;
+  --ink-muted: #928374;
+  --accent:    #fabd2f;
+  --border:    #504945;
+}
+
+/* =====================
+   DESIGN TOKENS — NORD
+   ===================== */
+[data-theme="nord"] {
+  --bg:        #2e3440;
+  --bg-card:   #3b4252;
+  --ink:       #eceff4;
+  --ink-muted: #7b88a1;
+  --accent:    #88c0d0;
+  --border:    #434c5e;
+}
+
+/* =====================
    RESET & BASE
    ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,26 +128,29 @@ nav {
 
 .nav-links a:hover { color: var(--accent); }
 
-/* Dark mode toggle button */
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--ink-muted);
-  cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
+/* Theme picker dots */
+.theme-picker {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  gap: 0.45rem;
+}
+
+.theme-dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
   flex-shrink: 0;
 }
 
-.theme-toggle:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.theme-dot:hover { transform: scale(1.25); }
+
+.theme-dot.active {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--ink);
+  transform: scale(1.15);
 }
 
 /* =====================
