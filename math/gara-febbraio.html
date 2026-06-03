@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superare la gara di febbraio 101 — jdesap</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>const s=localStorage.getItem('theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+  <style>
+    .box {
+      border-left: 4px solid;
+      padding: 0.9rem 1.1rem;
+      margin: 1.6rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .box-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .box-problem { border-color: #e05; background: #ee005512; }
+    .box-problem .box-label { color: #cc0044; }
+    [data-theme="dark"] .box-problem { background: #ee005518; }
+    [data-theme="dark"] .box-problem .box-label { color: #ff4477; }
+
+    .prose h2 { color: #c8540a; border-bottom-color: #c8540a44; }
+    .prose h3 { color: #b8920a; }
+    [data-theme="dark"] .prose h2 { color: #e07840; border-bottom-color: #e0784044; }
+    [data-theme="dark"] .prose h3 { color: #d4a820; }
+
+    .chili-ez     { color: #4caf50; }
+    .chili-easy   { color: #c8960c; }
+    .chili-medium { color: #cc5500; }
+    .chili-hard   { color: #aa1111; }
+    .chili-harder { color: #8b008b; }
+
+    .score-green { color: #2e7d32; font-weight: 700; }
+
+    .prose ul li { margin: 0.3em 0; }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav>
+    <a href="../index.html" class="nav-name">jdesap</a>
+    <div class="nav-links">
+      <a href="../math/index.html">Math</a>
+      <a href="../blog/index.html">Blog</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="article-main">
+    <a href="index.html" class="back-link">← Math</a>
+
+    <header class="article-header">
+      <h1>Superare la gara di febbraio 101</h1>
+      <div class="article-meta">3 giugno 2026 · <a href="mailto:desapintofrancescojude@gmail.com">desapintofrancescojude@gmail.com</a></div>
+    </header>
+
+    <article class="prose">
+
+      <!-- ══════════════════════════════════════
+           §0 INTRO
+      ══════════════════════════════════════ -->
+      <h2>0 — Intro</h2>
+
+      <p>
+        Passare a Cese non è banale, e quasi sicuramente non tutti noi ci riusciremo. Tuttavia, oggi voglio
+        provare a fornirvi gli strumenti che vi servono per superare questo enorme gradino. È un progetto ambizioso,
+        ma spero che questa lezione possa essere utile a più persone possibile.
+      </p>
+
+      <p>
+        In media, a Padova, con <span class="score-green">50</span> punti si può stare sereni.
+        Per arrivare a questo risultato, vi consiglio di gestirvela più o meno così:
+      </p>
+
+      <ul>
+        <li>5 crocette (25 pt)</li>
+        <li>1 numerico (5 pt)</li>
+        <li>1 dimostrativo (15 pt)</li>
+      </ul>
+
+      <p>
+        che, sommati ai 9 punti delle crocette in bianco, fanno 54 punti totali
+        (in media, con 54 si passa quasi ovunque).
+      </p>
+
+      <p>
+        Adesso entriamo nel sugo della questione e cerchiamo di capire come si risolvono, effettivamente, queste robe.
+      </p>
+
+      <!-- ══════════════════════════════════════
+           §1 DIMOSTRATIVI
+      ══════════════════════════════════════ -->
+      <h2>1 — Dimostrativi</h2>
+
+      <p>
+        I dimostrativi sono la parte più underrated della gara, nonché il motivo principale per cui io sono
+        passato tutti gli anni. In terza ero ultimo della provincia, ma primo ai dimostrativi — giusto per
+        darvi l'idea di quanto mi fanno cagare le crocette. La differenza tra chi passa e chi non passa la fa,
+        in genere, la capacità di risolvere un dimostrativo in maniera completa, anche se non mancano le eccezioni
+        (vd. Scagno).
+      </p>
+
+      <p>
+        In genere i dimostrativi sono uno per materia tra G, N e C, e sono tendenzialmente in ordine di difficoltà.
+        Io, quindi, se non avete una materia in cui siete nettamente più forti, vi consiglio di iniziare a
+        provare il 15 — tenendo bene a mente che ogni tanto l'ordine è un filo fuorviante: l'anno scorso,
+        secondo me, il 15 era il problema più tosto della gara.
+      </p>
+
+      <h3>1.1 — Geometria</h3>
+
+      <p>
+        Underrated as fuck! È crazy quanta gente eviti il dimostrativo di geometria, nonostante nella stragrande
+        maggioranza dei casi non sia eccessivamente difficile. Le tecniche sono più o meno sempre le stesse:
+        ciclicità, angle chasing e, se proprio vogliamo esagerare, costruire qualche simmetrico.
+      </p>
+
+      <p>Vediamo due esempi piuttosto difficili.</p>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-hard"></i> Problema · Febbraio 17, 2020
+        </div>
+        <p>
+          Sia $ABC$ un triangolo scaleno con $BC > CA > AB$. Siano $\omega$ e $\gamma$ le circonferenze passanti
+          per $A$ di centro, rispettivamente, $B$ e $C$. Esse intersecano il segmento $BC$ in $M$ e $N$, rispettivamente.
+          Costruiamo $Z$ come il simmetrico di $A$ rispetto al punto medio di $MN$.
+        </p>
+        <ol>
+          <li>Chiamata $P$ l'intersezione di $ZM$ con $AC$, mostrare che $CPM$ è isoscele.</li>
+          <li>Detta $X$ l'intersezione di $ZM$ con $\omega$ distinta da $M$, mostrare che $BX$ e $AC$ sono parallele.</li>
+          <li>Detta $Y$ l'intersezione di $ZN$ con $\gamma$ distinta da $N$, mostrare che $A$, $X$ e $Y$ sono allineati.</li>
+        </ol>
+      </div>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-medium"></i> Problema · Febbraio 17, 2018
+        </div>
+        Siano $ABC$ un triangolo e $P$ un suo punto interno. Sia $H$ il punto sul lato $BC$ tale che la bisettrice
+        dell'angolo $\widehat{AHP}$ è perpendicolare alla retta $BC$. Sapendo che $\widehat{ABC} = \widehat{HPC}$
+        e $\widehat{BPC} = 130^\circ$, determinare la misura dell'angolo $\widehat{BAC}$.
+      </div>
+
+      <h3>1.2 — Combinatoria</h3>
+
+      <p>
+        In combinatoria è un po' complicato prepararsi, perché non ci sono dei veri e propri argomenti e spesso
+        il processo risolutivo cambia molto da problema a problema. Nella gara di febbraio, le cose che ho visto
+        uscire più spesso sono queste: invarianti e colorazioni.
+      </p>
+
+      <p>
+        Le invarianti sono utili in quei problemi in cui c'è un gioco o un sistema che cambia con una serie di mosse.
+        Molto spesso, in questo tipo di problemi, c'è qualche quantità che si conserva: un'invariante. Se la trovate,
+        in molti casi avete fatto tre quarti del problema. Spesso un buon invariante è la parità — ad esempio in quei
+        problemi in cui bisogna accendere lampadine — ma può anche essere una somma di qualche quantità data dal
+        problema, o, in casi più difficili, che avete costruito voi.
+      </p>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-hard"></i> Problema
+        </div>
+        Su una lavagna ci sono scritti dei numeri tra 0 e 9 (eventualmente anche ripetuti). Una mossa consiste
+        nel prenderne un po' di distinti e sostituirli con l'insieme complementare. Dimostra che, se dopo una
+        serie di mosse si può arrivare ad avere un solo numero sulla lavagna, allora quel numero non dipende
+        dalla sequenza di mosse.
+      </div>
+
+      <p>
+        Per quanto riguarda le colorazioni: se vedete una griglia, fidatevi e provate a colorarla a scacchiera,
+        o in qualche altro modo strano. Nel 90% dei casi succede qualcosa di bello.
+      </p>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-medium"></i> Problema
+        </div>
+        Un pavimento rettangolare è stato coperto con piastrelle quadrate $2\times2$ e piastrelle rettangolari
+        $1\times4$ in un certo modo. Ad un certo punto una delle piastrelle si rompe. Dimostrare che non è
+        possibile sostituirla con una dell'altro tipo, neanche riorganizzando a piacere la pavimentazione.
+      </div>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-harder"></i>
+          <i class="fa-solid fa-pepper-hot chili-harder"></i>
+          Problema · Cesenatico 6, 2002
+        </div>
+        <p>Ho una scacchiera $100\times100$ con tutte le caselle bianche.</p>
+        <ol>
+          <li>Posso colorare un numero dispari di caselle in modo tale che ogni casella colorata abbia un numero dispari di caselle adiacenti colorate?</li>
+          <li>Posso colorare alcune caselle in modo tale che un numero dispari di esse abbia esattamente 1 casella adiacente colorata, e tutte le altre caselle colorate abbiano esattamente 2 caselle adiacenti colorate?</li>
+          <li>Posso colorare alcune caselle in modo tale che un numero dispari di esse abbia esattamente 2 caselle adiacenti colorate, e tutte le altre caselle colorate abbiano esattamente 4 caselle adiacenti colorate?</li>
+        </ol>
+        <p><em>Nota: due caselle si considerano adiacenti se hanno un lato in comune.</em></p>
+      </div>
+
+      <p>
+        Poi vabbè, ci sono altre cose come induzione e pigeonhole che ogni tanto escono, ma sono più rare
+        (a Cese si vedono moooolto più spesso), quindi magari saranno argomento per una prossima lezione.
+      </p>
+
+      <h3>1.3 — Teoria dei numeri</h3>
+
+      <p>
+        Qua spesso è complicato. La teoria già la sapete. Guardate i moduli semplici, le divisibilità, e
+        di solito qualcosa si riesce a cavar fuori.
+      </p>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-medium"></i> Problema
+        </div>
+        <p>
+          Diciamo che una coppia $(a, b)$ di interi positivi è <em>bella</em> se $a$ divide $b$ e $a+1$ divide $b+1$.
+        </p>
+        <ol type="a">
+          <li>Dimostrare che, fissato un intero positivo $a$, esistono infiniti interi positivi $b$ tali che la coppia $(a,b)$ sia bella.</li>
+          <li>Fissato un intero positivo $a$, determinare il minimo intero $b > a$ tale che $(a,b)$ sia bella.</li>
+          <li>Preso $a = 18$, determinare il minimo intero positivo $b > a$ tale che $(a,b)$ sia bella e inoltre $a+2$ divida $b+2$.</li>
+        </ol>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           §2 CROCETTE E NUMERICO
+      ══════════════════════════════════════ -->
+      <h2>2 — Crocette e numerico</h2>
+
+      <p>
+        Sul numerico c'è poco da dire: di solito ce n'è uno easy e uno un pochino più complicato. Sta a voi
+        individuare quale sia quale. Unica nota importante: <strong>attenti ai conti!</strong> (parlo per esperienza).
+      </p>
+
+      <p>
+        Per quanto riguarda le crocette, funziona più o meno uguale. Idealmente ve ne bastano 4 o 5, quindi
+        individuate quelle facili — e fidatevi che ce ne sono.
+      </p>
+
+      <p>
+        Ora faremo un esperimento e osserveremo le crocette e i numerici di un Cese vecchio, perché il modo
+        migliore di imparare queste robe è farle:
+        <a href="https://olimpiadi.dm.unibo.it/wp-content/uploads/2023/02/soluzioni2023.pdf" target="_blank">
+          soluzioni2023.pdf
+        </a>
+      </p>
+
+      <!-- ══════════════════════════════════════
+           §3 FINAL REMARKS
+      ══════════════════════════════════════ -->
+      <h2>3 — Final remarks</h2>
+
+      <p>
+        Spero che la roba vi sia stata utile. Per info e consigli, scrivetemi. Ricordate: il miglior modo
+        di migliorare è fare pratica. Bella.
+      </p>
+
+      <p style="margin-top:3.5rem; text-align:right; font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);">
+        FE!N
+      </p>
+
+    </article>
+  </main>
+
+  <footer><span>jdesap</span></footer>
+  <script>
+    const t=document.getElementById('themeToggle'),i=document.getElementById('themeIcon');
+    function applyTheme(th){if(th==='dark'){document.documentElement.setAttribute('data-theme','dark');i.className='fa-solid fa-sun';}else{document.documentElement.removeAttribute('data-theme');i.className='fa-solid fa-moon';}}
+    applyTheme(localStorage.getItem('theme')||'light');
+    t.addEventListener('click',()=>{const d=document.documentElement.getAttribute('data-theme')==='dark';const n=d?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+  </script>
+</body>
+</html>
