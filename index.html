@@ -20,12 +20,17 @@
     <div class="nav-links">
       <a href="math/index.html">math</a>
       <a href="blog/index.html">blog</a>
-      <div class="theme-picker" id="themePicker">
-        <button class="theme-dot" data-theme="light"   style="background:#8b3a1a" aria-label="Light"   title="light"></button>
-        <button class="theme-dot" data-theme="dark"    style="background:#c4673a" aria-label="Dark"    title="dark"></button>
-        <button class="theme-dot" data-theme="dracula" style="background:#bd93f9" aria-label="Dracula" title="dracula"></button>
-        <button class="theme-dot" data-theme="gruvbox" style="background:#fabd2f" aria-label="Gruvbox" title="gruvbox"></button>
-        <button class="theme-dot" data-theme="nord"    style="background:#88c0d0" aria-label="Nord"    title="nord"></button>
+      <div class="theme-toggle-wrap" id="themeWrap">
+        <button class="theme-toggle" id="themeToggle" aria-label="Choose theme">
+          <i class="fa-solid fa-palette"></i>
+        </button>
+        <div class="theme-menu" id="themeMenu">
+          <button class="theme-option" data-theme="light">  <span class="theme-swatch" style="background:#8b3a1a"></span>light</button>
+          <button class="theme-option" data-theme="dark">   <span class="theme-swatch" style="background:#c4673a"></span>dark</button>
+          <button class="theme-option" data-theme="dracula"><span class="theme-swatch" style="background:#bd93f9"></span>dracula</button>
+          <button class="theme-option" data-theme="gruvbox"><span class="theme-swatch" style="background:#fabd2f"></span>gruvbox</button>
+          <button class="theme-option" data-theme="nord">   <span class="theme-swatch" style="background:#88c0d0"></span>nord</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -74,20 +79,28 @@
   </footer>
 
   <script>
+    const wrap = document.getElementById('themeWrap');
+    document.getElementById('themeToggle').addEventListener('click', e => {
+      e.stopPropagation();
+      wrap.classList.toggle('open');
+    });
+    document.addEventListener('click', () => wrap.classList.remove('open'));
+
     function applyTheme(th) {
       if (th === 'light') document.documentElement.removeAttribute('data-theme');
       else document.documentElement.setAttribute('data-theme', th);
-      document.querySelectorAll('.theme-dot').forEach(d =>
+      document.querySelectorAll('.theme-option').forEach(d =>
         d.classList.toggle('active', d.dataset.theme === th)
       );
     }
     applyTheme(localStorage.getItem('theme') || 'light');
-    document.getElementById('themePicker').addEventListener('click', e => {
-      const dot = e.target.closest('.theme-dot');
-      if (!dot) return;
-      const th = dot.dataset.theme;
+    document.getElementById('themeMenu').addEventListener('click', e => {
+      const opt = e.target.closest('.theme-option');
+      if (!opt) return;
+      const th = opt.dataset.theme;
       localStorage.setItem('theme', th);
       applyTheme(th);
+      wrap.classList.remove('open');
     });
   </script>
 </body>
