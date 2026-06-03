@@ -8,9 +8,11 @@
   --ink-muted:  #7a6e5e;
   --accent:     #8b3a1a;
   --border:     #c9c0b0;
-  --h2-color:   #1a1208;
-  --h2-border:  #1a120830;
-  --h3-color:   #3a2e20;
+  --h2-color:    #1a1208;
+  --h2-border:   #1a120830;
+  --h3-color:    #3a2e20;
+  --box-eg-color:   #c8960c;
+  --box-prob-color: #e00055;
   --font-serif: 'EB Garamond', Georgia, serif;
   --font-mono:  'JetBrains Mono', monospace;
   --max-w: 780px;
@@ -26,9 +28,11 @@
   --ink-muted: #8a7e72;
   --accent:    #c4673a;
   --border:    #2e2820;
-  --h2-color:  #e8e0d4;
-  --h2-border: #e8e0d430;
-  --h3-color:  #c0b4a8;
+  --h2-color:    #e8e0d4;
+  --h2-border:   #e8e0d430;
+  --h3-color:    #c0b4a8;
+  --box-eg-color:   #d4a020;
+  --box-prob-color: #ff4477;
 }
 
 /* =====================
@@ -41,9 +45,11 @@
   --ink-muted: #6272a4;
   --accent:    #bd93f9;
   --border:    #44475a;
-  --h2-color:  #ff79c6;
-  --h2-border: #ff79c640;
-  --h3-color:  #8be9fd;
+  --h2-color:    #ff79c6;
+  --h2-border:   #ff79c640;
+  --h3-color:    #8be9fd;
+  --box-eg-color:   #ffb86c;
+  --box-prob-color: #ff5555;
 }
 
 /* =====================
@@ -56,9 +62,11 @@
   --ink-muted: #928374;
   --accent:    #fabd2f;
   --border:    #504945;
-  --h2-color:  #fabd2f;
-  --h2-border: #fabd2f40;
-  --h3-color:  #b8bb26;
+  --h2-color:    #fabd2f;
+  --h2-border:   #fabd2f40;
+  --h3-color:    #b8bb26;
+  --box-eg-color:   #fe8019;
+  --box-prob-color: #fb4934;
 }
 
 /* =====================
@@ -71,9 +79,11 @@
   --ink-muted: #7b88a1;
   --accent:    #88c0d0;
   --border:    #434c5e;
-  --h2-color:  #88c0d0;
-  --h2-border: #88c0d040;
-  --h3-color:  #81a1c1;
+  --h2-color:    #88c0d0;
+  --h2-border:   #88c0d040;
+  --h3-color:    #81a1c1;
+  --box-eg-color:   #ebcb8b;
+  --box-prob-color: #bf616a;
 }
 
 /* =====================
@@ -467,6 +477,40 @@ h1 {
   margin-bottom: 2rem;
 }
 .back-link:hover { color: var(--accent); }
+
+/* =====================
+   THEOREM / PROBLEM BOXES
+   ===================== */
+.box {
+  border-left: 4px solid;
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.box-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.box-example {
+  border-color: var(--box-eg-color);
+  background: color-mix(in srgb, var(--box-eg-color) 8%, var(--bg));
+}
+.box-example .box-label { color: var(--box-eg-color); }
+
+.box-problem {
+  border-color: var(--box-prob-color);
+  background: color-mix(in srgb, var(--box-prob-color) 8%, var(--bg));
+}
+.box-problem .box-label { color: var(--box-prob-color); }
 
 /* =====================
    FOOTER
