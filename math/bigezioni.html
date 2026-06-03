@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bigezioni — Your Name</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>const s=localStorage.getItem('theme');if(s==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-cml.js" async></script>
+
+  <style>
+    /* ── Theorem-like boxes ── */
+    .box {
+      border-left: 4px solid;
+      padding: 0.9rem 1.1rem;
+      margin: 1.6rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .box-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .box-example  { border-color: #c8960c; background: #c8960c12; }
+    .box-example .box-label  { color: #a07800; }
+    .box-problem  { border-color: #e05; background: #ee005512; }
+    .box-problem .box-label  { color: #cc0044; }
+    [data-theme="dark"] .box-example  { background: #c8960c18; }
+    [data-theme="dark"] .box-example .box-label { color: #d4a020; }
+    [data-theme="dark"] .box-problem  { background: #ee005518; }
+    [data-theme="dark"] .box-problem .box-label { color: #ff4477; }
+
+    /* ── Section headings colour ── */
+    .prose h2 {
+      color: #c8540a;
+      border-bottom-color: #c8540a44;
+      font-family: var(--font-serif);
+    }
+    [data-theme="dark"] .prose h2 { color: #e07840; border-bottom-color: #e0784044; }
+
+    /* ── Highlighted keywords ── */
+    .kw { color: #1a4fa0; font-weight: 700; }
+    [data-theme="dark"] .kw { color: #6aacff; }
+
+    /* ── Difficulty chilis ── */
+    .chili-medium { color: #cc5500; }
+    .chili-hard   { color: #aa1111; }
+
+    /* ── SVG diagrams ── */
+    .diagram {
+      display: flex;
+      justify-content: center;
+      margin: 1.8rem 0;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .diagram svg {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: 4px;
+    }
+
+    /* ── system of equations ── */
+    .sys { margin: 1.2rem 0 1.2rem 2rem; }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav>
+    <a href="../index.html" class="nav-name">Your Name</a>
+    <div class="nav-links">
+      <a href="../math/index.html">Math</a>
+      <a href="../blog/index.html">Blog</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="article-main">
+    <a href="index.html" class="back-link">← Math</a>
+
+    <header class="article-header">
+      <h1>Bigezioni</h1>
+      <div class="article-meta">3 giugno 2026 · Jude De Sa'Pinto</div>
+    </header>
+
+    <article class="prose">
+
+      <!-- ══════════════════════════════════════
+           §0 INTRODUZIONE
+      ══════════════════════════════════════ -->
+      <h2>0 — Introduzione</h2>
+
+      <p>
+        Formalmente una bigezione è una funzione $f:A\rightarrow B$ suriettiva e iniettiva, e quindi invertibile.
+        Di fatto noi la possiamo vedere come una sorta di portale mistico che ci trasforma tutti gli oggetti del tipo $A$
+        in oggetti del tipo $B$ e viceversa, quindi una corrispondenza "uno ad uno" tra gli oggetti del tipo $A$ e quelli
+        del tipo $B$. La cosa figa è che, se abbiamo una bigezione tra due insiemi possiamo dire che le loro cardinalità
+        sono uguali. Quindi, se una quantità è particolarmente ostica da contare di per sè, ne possiamo contare un'altra
+        in bigezione con quella di partenza.
+      </p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 0.1</div>
+        In quanti modi posso scegliere un gruppo di 6 persone tra 15 persone?
+      </div>
+
+      <p>
+        Beh questo è un esempio piuttosto stupido, basta fare $\binom{15}{7}$, ma per uno che sa solo come contare
+        gli anagrammi e non ha mai sentito parlare di binomiali ci vuole un passaggio in più: quando scegliamo un
+        sottoinsieme del nostro gruppo di 15 persone stiamo effettivamente associando un "lo prendo" (S) o un
+        "non lo prendo" (N) a ognuna di queste persone. Quindi esiste una bigezione tra i sottoinsiemi cercati e
+        gli anagrammi di <code>SSSSSSSNNNNNNNN</code> (che sarebbe la stringa che corrisponde a prendere le prime
+        7 persone dell'insieme), che sono facili da contare.
+      </p>
+
+      <!-- ══════════════════════════════════════
+           §1 A COSA BIGETTO?
+      ══════════════════════════════════════ -->
+      <h2>1 — A cosa "bigetto"?</h2>
+
+      <p>
+        Spesso la difficoltà di questi problemi sta nello scovare un insieme di arrivo per la nostra bigezione.
+        Per capire un po' come funziona passiamo a problemi di livello medio-alto.
+      </p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 1.1</div>
+        Quanti sono i sottoinsiemi di $\{1, 2, \ldots , 15\}$ che non contengono interi consecutivi?
+      </div>
+
+      <p>
+        Il trick come prima è usare le <span class="kw">stringhe di lettere</span>. Possiamo creare una bigezione
+        che manda le stringhe di 15 lettere "S" (ossia prendo il numero) o "N".
+      </p>
+      <p>
+        Adesso ci chiediamo quante stringhe di 15 lettere esistano tali che non ci siano due $S$ consecutive.
+        Sia $F_k$ il numero di stringhe di $k$ lettere che rispettano la proprietà desiderata. Facilmente troviamo
+        $F_1=1$ e $F_2=2$. Infine ci basta notare che le stringhe di $k$ lettere possono iniziare in $S$, e allora
+        dopo c'è una $N$ e poi c'è una stringa arbitraria di $k-2$ lettere, o in $N$, dopo cui c'è una stringa
+        arbitraria di $k-1$ lettere (<em>et tertium non datur</em>). Quindi abbiamo ricavato una relazione ricorsiva
+        per $\{F_k\}$:
+      </p>
+
+      $$\begin{cases} F_1=1 \\ F_2=2 \\ F_k=F_{k-1}+F_{k-2} \end{cases}$$
+
+      <p>Facendo i conti otteniamo $F_{15}=987$.</p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 1.2 &nbsp;·&nbsp; Dyck Paths</div>
+        Considera una griglia quadrata di lato $n$. Quanti sono i percorsi minimi appartenenti alla griglia
+        che collegano il vertice in basso a sinistra con quello in alto a destra senza passare per la diagonale
+        che li collega?
+      </div>
+
+      <!-- TikZ diagram 1: single grid with one valid path -->
+      <div class="diagram">
+        <svg width="160" height="160" viewBox="-4 -4 72 72" xmlns="http://www.w3.org/2000/svg">
+          <!-- grid -->
+          <g stroke="#aaa" stroke-width="0.4" opacity="0.6">
+            <line x1="0" y1="0" x2="0" y2="64"/><line x1="8" y1="0" x2="8" y2="64"/>
+            <line x1="16" y1="0" x2="16" y2="64"/><line x1="24" y1="0" x2="24" y2="64"/>
+            <line x1="32" y1="0" x2="32" y2="64"/><line x1="40" y1="0" x2="40" y2="64"/>
+            <line x1="48" y1="0" x2="48" y2="64"/><line x1="56" y1="0" x2="56" y2="64"/>
+            <line x1="64" y1="0" x2="64" y2="64"/>
+            <line x1="0" y1="0" x2="64" y2="0"/><line x1="0" y1="8" x2="64" y2="8"/>
+            <line x1="0" y1="16" x2="64" y2="16"/><line x1="0" y1="24" x2="64" y2="24"/>
+            <line x1="0" y1="32" x2="64" y2="32"/><line x1="0" y1="40" x2="64" y2="40"/>
+            <line x1="0" y1="48" x2="64" y2="48"/><line x1="0" y1="56" x2="64" y2="56"/>
+            <line x1="0" y1="64" x2="64" y2="64"/>
+          </g>
+          <!-- diagonal (LimeGreen) -->
+          <line x1="0" y1="64" x2="64" y2="0" stroke="#7ec850" stroke-width="1.5"/>
+          <!-- path (ForestGreen): coords flipped (y=64-y_tikz*8) -->
+          <!-- tikz path: (0,0)->(1,0)->(1,1)->(2,1)->(3,1)->(4,1)->(4,2)->(5,2)->(6,2)->(6,3)->(6,4)->(6,5)->(6,6)->(7,6)->(7,7)->(8,7)->(8,8) -->
+          <polyline points="0,64 8,64 8,56 16,56 24,56 32,56 32,48 40,48 48,48 48,40 48,32 48,24 48,16 56,16 56,8 64,8 64,0"
+            fill="none" stroke="#228b22" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <p>
+        Un'altra idea figa, soprattutto quando dobbiamo contare delle configurazioni visualizzabili, è quella di creare
+        <span class="kw">bigezioni geometriche</span>. Molte trasformazioni sono involuzioni, ossia funzioni tali che
+        $f(f(x))=x$ (basta pensare a simmetrie o inversioni circolari). Non è difficile dimostrare che ogni involuzione
+        è bigettiva.
+      </p>
+      <p>
+        Intanto l'idea è quella di contare i percorsi che non vanno bene. Poi dobbiamo fare una costruzione un po'
+        calata dal cielo: consideriamo la linea gialla e riflettiamo rispetto ad essa la parte di percorso che parte
+        dall'inizio fino al primo punto di contatto con essa.
+      </p>
+
+      <!-- TikZ diagram 2: two grids side by side -->
+      <div class="diagram">
+        <!-- LEFT: path that crosses diagonal -->
+        <svg width="160" height="160" viewBox="-4 -4 72 72" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#aaa" stroke-width="0.4" opacity="0.6">
+            <line x1="0" y1="0" x2="0" y2="64"/><line x1="8" y1="0" x2="8" y2="64"/>
+            <line x1="16" y1="0" x2="16" y2="64"/><line x1="24" y1="0" x2="24" y2="64"/>
+            <line x1="32" y1="0" x2="32" y2="64"/><line x1="40" y1="0" x2="40" y2="64"/>
+            <line x1="48" y1="0" x2="48" y2="64"/><line x1="56" y1="0" x2="56" y2="64"/>
+            <line x1="64" y1="0" x2="64" y2="64"/>
+            <line x1="0" y1="0" x2="64" y2="0"/><line x1="0" y1="8" x2="64" y2="8"/>
+            <line x1="0" y1="16" x2="64" y2="16"/><line x1="0" y1="24" x2="64" y2="24"/>
+            <line x1="0" y1="32" x2="64" y2="32"/><line x1="0" y1="40" x2="64" y2="40"/>
+            <line x1="0" y1="48" x2="64" y2="48"/><line x1="0" y1="56" x2="64" y2="56"/>
+            <line x1="0" y1="64" x2="64" y2="64"/>
+          </g>
+          <line x1="0" y1="64" x2="64" y2="0" stroke="#7ec850" stroke-width="1.5"/>
+          <!-- bad path: (0,0)->(1,0)->(1,1)->(2,1)->(3,1)->(4,1)->(4,5)->(6,5)->(6,8)->(8,8) -->
+          <polyline points="0,64 8,64 8,56 16,56 24,56 32,56 32,24 48,24 48,0 64,0"
+            fill="none" stroke="#228b22" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- RIGHT: with reflected prefix in purple, yellow line -->
+        <svg width="180" height="160" viewBox="-12 -4 80 72" xmlns="http://www.w3.org/2000/svg">
+          <!-- extra column on left for (-1,*) -->
+          <g stroke="#aaa" stroke-width="0.4" opacity="0.6">
+            <line x1="-8" y1="0" x2="-8" y2="64"/><line x1="0" y1="0" x2="0" y2="64"/>
+            <line x1="8" y1="0" x2="8" y2="64"/><line x1="16" y1="0" x2="16" y2="64"/>
+            <line x1="24" y1="0" x2="24" y2="64"/><line x1="32" y1="0" x2="32" y2="64"/>
+            <line x1="40" y1="0" x2="40" y2="64"/><line x1="48" y1="0" x2="48" y2="64"/>
+            <line x1="56" y1="0" x2="56" y2="64"/><line x1="64" y1="0" x2="64" y2="64"/>
+            <line x1="-8" y1="0" x2="64" y2="0"/><line x1="-8" y1="8" x2="64" y2="8"/>
+            <line x1="-8" y1="16" x2="64" y2="16"/><line x1="-8" y1="24" x2="64" y2="24"/>
+            <line x1="-8" y1="32" x2="64" y2="32"/><line x1="-8" y1="40" x2="64" y2="40"/>
+            <line x1="-8" y1="48" x2="64" y2="48"/><line x1="-8" y1="56" x2="64" y2="56"/>
+            <line x1="-8" y1="64" x2="64" y2="64"/>
+          </g>
+          <!-- green diagonal -->
+          <line x1="0" y1="64" x2="64" y2="0" stroke="#7ec850" stroke-width="1.5"/>
+          <!-- yellow line: from (-1,0) to (8,9) in tikz = (-8,64) to (64,-8) in svg -->
+          <line x1="-8" y1="64" x2="64" y2="-8" stroke="#e6b800" stroke-width="2"/>
+          <!-- original path (faint green) -->
+          <polyline points="0,64 8,64 8,56 16,56 24,56 32,56 32,24 48,24 48,0 64,0"
+            fill="none" stroke="#228b22" stroke-width="1.5" stroke-linejoin="round" opacity="0.35"/>
+          <!-- reflected prefix in purple: (-1,1)->(-1,2)->(0,2)->(0,5)->(4,5) in tikz
+               svg: x*8-8, y=64-y_tikz*8
+               (-1,1)=(-16,56) hmm let me use tikz coords directly scaled
+               tikz: (-1,1)->(-1,2)->(0,2)->(0,5)->(4,5)
+               svg x = (x_tikz)*8, svg y = 64 - y_tikz*8
+               (-1,1) -> -8, 56 ; (-1,2)->-8,48 ; (0,2)->0,48 ; (0,5)->0,24 ; (4,5)->32,24 -->
+          <polyline points="-8,56 -8,48 0,48 0,24 32,24"
+            fill="none" stroke="#8b00c8" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <p>
+        Notiamo che in questo modo, partendo da un percorso che non va bene possiamo ottenere tutti i percorsi
+        da $(-1,1)$ a $(n,n)$. Inoltre si può anche fare il contrario (perché?), quindi c'è una bigezione.
+        Ma i percorsi da $(-1,1)$ a $(n,n)$ sappiamo contarli, e anche i percorsi totali, quindi il numero
+        di percorsi che vanno bene è:
+      </p>
+
+      $$\binom{2n}{n}-\binom{2n}{n-1}=\frac{1}{n+1}\cdot\binom{2n}{n}$$
+
+      <p>
+        Questo numero è detto <span class="kw">numero di Catalan</span> e si indica con $C_n$.
+        Come vedremo esce spesso in combinatoria.
+      </p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 1.3</div>
+        Dimostra che il modo di disporre $n$ coppie di parentesi in modo sensato
+        (per esempio <code>(()())()()</code> è sensato ma <code>())()(()  </code> non lo è) è $C_n$.
+      </div>
+
+      <p>
+        C'è una bigezione banale con la griglia, ossia quella che associa ogni segmento orizzontale a una
+        "<code>(</code>" e ogni segmento verticale a una "<code>)</code>". La condizione che il percorso non
+        oltrepassi la diagonale è equivalente alla condizione che la disposizione delle parentesi sia sensata.
+      </p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 1.4</div>
+        Dimostra che il numero di alberi con $n+1$ nodi è $C_n$.
+      </div>
+
+      <p>
+        Si vede facilmente che ognuno di questi alberi ha $n$ rami. Si trova una bigezione con le parentesi
+        "leggendo" l'albero da sinistra a destra e considerando ogni "sottoramo" come una parentesi interna
+        al suo "sovraramo" e ogni ramo dello stesso livello come una parentesi adiacente.
+      </p>
+      <p><em>N.B.: secondo me questa è molto meno banale.</em></p>
+
+      <div class="box box-example">
+        <div class="box-label">Esempio 1.5</div>
+        <p>Definiamo una <em>partizione</em> di un naturale $n$ come una $m$-upla non ordinata di naturali con somma $n$.</p>
+        <ol type="a">
+          <li>Dimostrare che le partizioni di $n$ in $k$ parti sono tante quante le partizioni di $n$ la cui parte maggiore è $k$.</li>
+          <li>Dimostrare che il numero di partizioni di $n$ in cui le parti sono tutte distinte è uguale al numero di partizioni di $n$ in cui le parti sono tutte dispari.</li>
+        </ol>
+      </div>
+
+      <p>
+        Boh sincero non ho voglia di scriverli, quindi vi do 2 hint: per il primo punto cercate su internet
+        "diagramma di Ferrers", per il secondo fate la cosa che vi sembra più naturale e ricordate che la
+        scrittura binaria di un numero $\exists!$.
+      </p>
+
+      <!-- ══════════════════════════════════════
+           §2 PROBLEMI
+      ══════════════════════════════════════ -->
+      <h2>2 — Problemi di livello nazionale/internazionale</h2>
+
+      <p>
+        Ora che ci abbiamo preso la mano vi caccio dei problemi un filino (e per un filino intendo <strong>TANTO</strong>)
+        più tosti di cui non ho voglia di scrivere le dim (ma se c'è bisogno chiedetemi pure, comunque ci sono le sol
+        online se cercate tipo su AOPS).
+      </p>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-medium"></i> Problema 2.1 &nbsp;·&nbsp; IMOSL 2002.C1
+        </div>
+        Sia $n$ un intero positivo. Ogni punto $(x, y)$ nel piano, dove $x$ e $y$ sono interi non negativi con
+        $x + y &lt; n$, è colorato in rosso o blu, soggetto alla seguente condizione: se un punto $(x, y)$ è rosso,
+        allora lo sono anche tutti i punti $(x', y')$ con $x' \leq x$ e $y' \leq y$. Sia $A$ il numero di modi per
+        scegliere $n$ punti blu con coordinate $x$ distinte, e sia $B$ il numero di modi per scegliere $n$ punti blu
+        con coordinate $y$ distinte. Dimostrare che $A = B$.
+      </div>
+
+      <div class="box box-problem">
+        <div class="box-label">
+          <i class="fa-solid fa-pepper-hot chili-hard"></i> Problema 2.2 &nbsp;·&nbsp; USAMO 1996
+        </div>
+        Sia $a_n$ il numero di sequenze binarie di $n$ cifre che non contengono "<code>010</code>" e sia $b_n$
+        il numero di sequenze binarie di $n$ cifre che non contengono "<code>0011</code>" o "<code>1100</code>".
+        Dimostra che $2b_{n+1}=a_n$.
+      </div>
+
+      <p style="margin-top:3.5rem; text-align:right; font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);">
+        FE!N
+      </p>
+
+    </article>
+  </main>
+
+  <footer><span>Your Name</span></footer>
+  <script>
+    const t=document.getElementById('themeToggle'),i=document.getElementById('themeIcon');
+    function applyTheme(th){if(th==='dark'){document.documentElement.setAttribute('data-theme','dark');i.className='fa-solid fa-sun';}else{document.documentElement.removeAttribute('data-theme');i.className='fa-solid fa-moon';}}
+    applyTheme(localStorage.getItem('theme')||'light');
+    t.addEventListener('click',()=>{const d=document.documentElement.getAttribute('data-theme')==='dark';const n=d?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+  </script>
+</body>
+</html>
