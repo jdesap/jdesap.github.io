@@ -65,6 +65,6 @@ math articles use [MathJax](https://www.mathjax.org/). wrap inline math in `$...
 
 ---
 
-## dark mode
+## themes
 
 there's a toggle in the nav. preference is saved in localStorage so it persists across pages.
